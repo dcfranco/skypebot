@@ -1,0 +1,22 @@
+{
+  "name": "bot",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+	"start": "node api.js",
+    "web": "node api.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "bluebird": "^3.5.0",
+    "botbuilder": "^3.8.3",
+    "dotenv-extended": "^2.0.1",
+    "restify": "^4.3.0",
+    "swagger-client": "^3.1.0"
+  },
+  "engines": {
+    "node": "4.1.1"
+  }
+}
