@@ -119,9 +119,13 @@ var bot = new builder.UniversalBot(connector, function (session) {
 
     var searchItem = session.message.text.substring(8, session.message.text.length);
 
-    if (searchItem.indexOf("/tempo") >= 0) {
+    if(session.message.user.name == "Gilleady Daboit - Philips Clinical Informatics") {
+        session.send("Hoje não Daboit hehhehe");
+    } else if (searchItem.indexOf("/tempo") >= 0) {
         sendTempo(session, 3);
+        console.log("[/tempo] - Recv");
     } else if(searchItem.indexOf("/gif") >= 0){
+        console.log("[/gif] - Recv");
         var toSearch = searchItem.substring(6, searchItem.length);
         var arr = toSearch.split(' ');
         var linkAppend = "";
@@ -131,6 +135,7 @@ var bot = new builder.UniversalBot(connector, function (session) {
         });
 
         var link = "http://api.giphy.com/v1/gifs/search?q=" + linkAppend + "&api_key=dc6zaTOxFJmzC"
+        console.log("[/gif] - Link: " + link);
 
         request({
             url: link,
@@ -147,11 +152,13 @@ var bot = new builder.UniversalBot(connector, function (session) {
                                 contentUrl: gifLink
                             }]);
                         session.send(gifLink);
+                        console.log("[/gif] - Sended");
                     }
                 }
             }
         });
     } else if(searchItem.indexOf("/imagem") >= 0){
+        console.log("[/imagem] - Recv");
         var toSearch = searchItem.substring(9, searchItem.length);
         var arr = toSearch.split(' ');
         var linkAppend = "";
@@ -161,7 +168,7 @@ var bot = new builder.UniversalBot(connector, function (session) {
         });
 
         var link = "https://api.flickr.com/services/feeds/photos_public.gne?tags=" + linkAppend + "&format=json"
-
+        console.log("[/imagem] - Link: " + link);
         var jsonFlickrFeed = function(body) {
             if (body.items && body.items.length > 0) {
                 var gifIndex = Math.floor(Math.random() * body.items.length);
@@ -173,6 +180,7 @@ var bot = new builder.UniversalBot(connector, function (session) {
                             contentUrl: gifLink
                         }]);
                     session.send(gifLink);
+                    console.log("[/imagem] - Sended");
                 }
             }
         }
