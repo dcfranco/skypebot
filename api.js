@@ -119,9 +119,7 @@ var bot = new builder.UniversalBot(connector, function (session) {
 
     var searchItem = session.message.text.substring(8, session.message.text.length);
 
-    if(session.message.user.name == "Gilleady Daboit - Philips Clinical Informatics") {
-        session.send("Hoje não Daboit hehhehe");
-    } else if (searchItem.indexOf("/tempo") >= 0) {
+    if (searchItem.indexOf("/tempo") >= 0) {
         sendTempo(session, 3);
         console.log("[/tempo] - Recv");
     } else if(searchItem.indexOf("/gif") >= 0){
@@ -215,7 +213,7 @@ setInterval(() => {
                     if (gifLink) {
                         var card = new builder.HeroCard(savedSession)
                             .title("#JS Crew")
-                            .text("Um bom dia pra rapa #lifeCrazy");
+                            .text("Um bom dia");
 
                         var msg = new builder.Message(savedSession).attachments([card]);
                         savedSession.send(msg);
